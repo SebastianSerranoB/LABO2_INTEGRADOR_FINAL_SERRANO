@@ -1,0 +1,1 @@
+﻿public enum EPaquetesViaje { Bronce = 1000, Plata = 3000, Oro = 10000};
