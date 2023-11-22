@@ -1,0 +1,16 @@
+
+El objetivo es que la base de datos tenga dos tablas con valores ya cargados. 
+Las tablas son pasajeros y reservas, deberian tener unos 20 objetos cargados cada una.
+
+Tratar de levantar la database restaurando Integrador_Serrano_AgenciaTurismo
+El nombre de la database deberia ser: "INTEGRADOR_AgenciaTurismo_DB" .
+Para matchear con el atributo connectionString que asigne por defecto en los constructores de mis clases ADOReservas y ADOPasajeros
+ this.stringConnection = "Server=.;Database=INTEGRADOR_AgenciaTurismo_DB;Trusted_Connection=True;";
+Esto lo encontramos en el proyecto Entidades, carpeta BasedeDatos -> clases
+
+
+EN CASO DE ERROR EJECUTAR SCRIPT
+Si no pudiera cargar la estructura de tablas y los valores correspondientes a esta 
+entonces ejecutar el script. Contiene la estructura y los objetos.
+
+Gracias, disculpe la molestia y espero funcione sin inconvenientes.
