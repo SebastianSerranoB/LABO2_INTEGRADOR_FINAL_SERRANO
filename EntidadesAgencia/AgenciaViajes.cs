@@ -232,6 +232,12 @@ namespace EntidadesAgencia
             return false;
         }
 
+        /// <summary>
+        /// Sobrecarga de operador '!=' para comprobar si una reserva no está contenida en la agencia.
+        /// </summary>
+        /// <param name="agencia">AgenciaViajes donde se busca la reserva.</param>
+        /// <param name="reserva">Reserva a buscar en la agencia.</param>
+        /// <returns>Booleano indicando si la reserva no está presente en la agencia.</returns>
         public static bool operator !=(AgenciaViajes agencia, Reserva reserva)
         { 
             return !(agencia == reserva);
@@ -240,7 +246,12 @@ namespace EntidadesAgencia
 
 
 
-
+        /// <summary>
+        /// Sobrecarga de operador '==' para comprobar si un pasajero está contenido en la agencia.
+        /// </summary>
+        /// <param name="agencia">AgenciaViajes donde se busca el pasajero.</param>
+        /// <param name="pasajero">Pasajero a buscar en la agencia.</param>
+        /// <returns>Booleano indicando si el pasajero está presente en la agencia.</returns>
         public static bool operator ==(AgenciaViajes agencia, Pasajero pasajero)
         {
             if (agencia is not null && pasajero is not null && agencia.Pasajeros.Count > 0)
@@ -258,6 +269,12 @@ namespace EntidadesAgencia
             return false;
         }
 
+        /// <summary>
+        /// Sobrecarga de operador '!=' para comprobar si un pasajero no está contenido en la agencia.
+        /// </summary>
+        /// <param name="agencia">AgenciaViajes donde se busca el pasajero.</param>
+        /// <param name="pasajero">Pasajero a buscar en la agencia.</param>
+        /// <returns>Booleano indicando si el pasajero no está presente en la agencia.</returns>
         public static bool operator !=(AgenciaViajes agencia, Pasajero pasajero)
         {
             return !(agencia == pasajero);
