@@ -42,6 +42,7 @@
             btn_MenuPrincipalDesdeAltaCliente = new Button();
             numericUpDownEdad = new NumericUpDown();
             lblEdad = new Label();
+            btnDescripcionPaquetes = new Button();
             grpPaquetes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDownEdad).BeginInit();
             SuspendLayout();
@@ -180,12 +181,23 @@
             lblEdad.TabIndex = 10;
             lblEdad.Text = "Edad";
             // 
+            // btnDescripcionPaquetes
+            // 
+            btnDescripcionPaquetes.Location = new Point(285, 394);
+            btnDescripcionPaquetes.Name = "btnDescripcionPaquetes";
+            btnDescripcionPaquetes.Size = new Size(186, 23);
+            btnDescripcionPaquetes.TabIndex = 11;
+            btnDescripcionPaquetes.Text = "Descripcion de paquetes";
+            btnDescripcionPaquetes.UseVisualStyleBackColor = true;
+            btnDescripcionPaquetes.Click += btnDescripcionPaquetes_Click;
+            // 
             // FrmAltaCliente
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             ControlBox = false;
+            Controls.Add(btnDescripcionPaquetes);
             Controls.Add(lblEdad);
             Controls.Add(numericUpDownEdad);
             Controls.Add(btn_MenuPrincipalDesdeAltaCliente);
@@ -202,7 +214,7 @@
             MinimizeBox = false;
             Name = "FrmAltaCliente";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "FrmAltaCliente";
+            Text = "Alta Pasajero";
             Load += FrmAltaCliente_Load;
             grpPaquetes.ResumeLayout(false);
             grpPaquetes.PerformLayout();
@@ -227,5 +239,6 @@
         private Button btn_MenuPrincipalDesdeAltaCliente;
         private NumericUpDown numericUpDownEdad;
         private Label lblEdad;
+        private Button btnDescripcionPaquetes;
     }
 }

@@ -32,6 +32,7 @@
             btnVentas = new Button();
             btnListaClientes = new Button();
             btnSalirApp = new Button();
+            lblCargaDeRegistros = new Label();
             SuspendLayout();
             // 
             // btnAtender
@@ -74,12 +75,23 @@
             btnSalirApp.UseVisualStyleBackColor = true;
             btnSalirApp.Click += btnSalirApp_Click;
             // 
+            // lblCargaDeRegistros
+            // 
+            lblCargaDeRegistros.AutoSize = true;
+            lblCargaDeRegistros.ForeColor = SystemColors.InfoText;
+            lblCargaDeRegistros.Location = new Point(23, 412);
+            lblCargaDeRegistros.Name = "lblCargaDeRegistros";
+            lblCargaDeRegistros.Size = new Size(0, 15);
+            lblCargaDeRegistros.TabIndex = 4;
+            lblCargaDeRegistros.Visible = false;
+            // 
             // FrmMenuPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             ControlBox = false;
+            Controls.Add(lblCargaDeRegistros);
             Controls.Add(btnSalirApp);
             Controls.Add(btnListaClientes);
             Controls.Add(btnVentas);
@@ -93,6 +105,7 @@
             FormClosing += FrmMenuPrincipal_FormClosing;
             Load += FrmMenuPrincipal_Load;
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -101,5 +114,6 @@
         private Button btnVentas;
         private Button btnListaClientes;
         private Button btnSalirApp;
+        private Label lblCargaDeRegistros;
     }
 }

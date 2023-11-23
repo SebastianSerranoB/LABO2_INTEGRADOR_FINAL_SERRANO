@@ -29,6 +29,7 @@ namespace FrmVista
         private void FrmAltaCliente_Load(object sender, EventArgs e)
         {
             this.rdbBronce.Checked = true;
+            this.agencia.botonMostrarDescripcionPulsado += AgenciaViajes_MostrarDescripcionPaquetes;
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -231,6 +232,34 @@ namespace FrmVista
             this.formMenuPrincipal.Show();
 
         }
+
+        private void btnDescripcionPaquetes_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (this.agencia.InvocarMostrarDescripcion(sender, e))
+                {
+
+                }
+                else
+                {
+                    MessageBox.Show("No se a cargado informacion que describa los paquetes");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error al mostrar descripcion", MessageBoxButtons.OK);
+            }
+
+            
+        }
+
+        private void AgenciaViajes_MostrarDescripcionPaquetes(object sender, EventArgs e)
+        {
+            MessageBox.Show(this.agencia.DescripcionPaquetes(),"Descripcion paquetes", MessageBoxButtons.OK,MessageBoxIcon.Information);
+        }
+
+
     }
 
 }
