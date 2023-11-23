@@ -3,31 +3,53 @@ using System.Text;
 
 namespace EntidadesAgencia
 {
-    
+    // <summary>
+    /// Delegado utilizado para mostrar la descripción de paquetes de viaje.
+    /// </summary>
+    /// <param name="sender">El objeto que activa el evento.</param>
+    /// <param name="e">Argumentos del evento.</param>
+    public delegate void MostrarDescripcionPaquetes(object sender, EventArgs e);
 
+    /// <summary>
+    /// Clase encargada de gestionar las listas de Pasajeros y la lista de sus correspondientes Reservas.
+    ///Contiene distintas funcionalidades para interactuar con estas listas.
+    /// </summary>
     public class AgenciaViajes
     {
         private List<Pasajero> listaDePasajeros;
         private List<Reserva> historialDeReservas;
 
-        public delegate void MostrarDescripcionPaquetes(object sender, EventArgs e);
+        // Evento que se dispara al pulsar el botón para mostrar la descripción de paquetes.
         public event MostrarDescripcionPaquetes? botonMostrarDescripcionPulsado;
-       // public event EventHandler seria lo mismo, EventHandler es un tipo de delegado que retorna void y recibe args(object sender, EventArgs e)
-        
-       
+
+
+        /// <summary>
+        /// Constructor de la clase AgenciaViajes, instancia las listas.
+        /// </summary>
         public AgenciaViajes()
         {
            this.listaDePasajeros = new List<Pasajero>();
            this.historialDeReservas = new List<Reserva>();
         }
 
+        /// <summary>
+        /// Obtiene o establece la lista de pasajeros registrados en la agencia.
+        /// </summary>
+        public List<Pasajero> Pasajeros { get { return this.listaDePasajeros; } set { this.listaDePasajeros = value; } }
 
-       public List<Pasajero> Pasajeros { get { return this.listaDePasajeros; } set { this.listaDePasajeros = value; } }
-       public List<Reserva> Reservas { get { return this.historialDeReservas; } set { this.historialDeReservas = value; } }
+        /// <summary>
+        /// Obtiene o establece la lista de reservas registradas en la agencia.
+        /// </summary>
+        public List<Reserva> Reservas { get { return this.historialDeReservas; } set { this.historialDeReservas = value; } }
 
 
-
-       public bool InvocarMostrarDescripcion(object sender, EventArgs e) 
+        /// <summary>
+        /// Invoca el evento de mostrar descripción de paquetes.
+        /// </summary>
+        /// <param name="sender">El objeto que invoca el evento.</param>
+        /// <param name="e">Argumentos del evento.</param>
+        /// <returns>True si el evento fue invocado con éxito; de lo contrario, False.</returns>
+        public bool InvocarMostrarDescripcion(object sender, EventArgs e) 
        {
             if (this.botonMostrarDescripcionPulsado is not null)
             {

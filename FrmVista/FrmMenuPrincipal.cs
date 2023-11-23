@@ -80,12 +80,19 @@ namespace FrmVista
 
         }
 
+        /// <summary>
+        /// Inicia una tarea en segundo plano(hilo,thread) para validar los registros de la agencia de viajes.
+        /// </summary>
         private void CargarListaEnSegundoPlano()
         {
             Thread tareaSecundaria = new Thread(ValidarRegistrosDeAgenciaViajes);
             tareaSecundaria.Start();
         }
 
+        /// <summary>
+        /// Método que valida los registros de pasajeros y reservas de la agencia de viajes en segundo plano.
+        /// Muestra un mensaje indicando el proceso y los resultados obtenidos.
+        /// </summary>
         private void ValidarRegistrosDeAgenciaViajes()
         {
             StringBuilder sb = new StringBuilder();
@@ -114,6 +121,10 @@ namespace FrmVista
             MessageBox.Show(sb.ToString(), "Tarea en segundo plano finalizada.");
         }
 
+
+        /// <summary>
+        /// Muestra un mensaje de éxito en un label de el formulario Menu Principal,cuando se carga el registro de pasajeros.
+        /// </summary>
         private void MostrarLabelExito()
         {
 

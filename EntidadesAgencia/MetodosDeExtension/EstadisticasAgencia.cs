@@ -7,8 +7,18 @@ using System.Threading.Tasks;
 
 namespace EntidadesAgencia.MetodosDeExtension
 {
+
+    /// <summary>
+    /// Clase static con metodos de Extension  que contiene métodos para calcular estadísticas relacionadas a AgenciaViajes.
+    /// </summary>
     public static class EstadisticasAgencia
     {
+
+        // <summary>
+        /// Calcula el promedio de precio por reserva para una AgenciaViajes dada.
+        /// </summary>
+        /// <param name="agenciaDeViaje">Instancia de la Agencia de Viajes.</param>
+        /// <returns>El promedio de precio por reserva o un mensaje indicando la ausencia de reservas.</returns>
         public static string PromedioDePrecioPorReserva(this AgenciaViajes agenciaDeViaje)
         {
             string retorno = string.Empty;

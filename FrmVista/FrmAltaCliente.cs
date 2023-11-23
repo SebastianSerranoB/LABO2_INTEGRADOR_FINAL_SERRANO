@@ -26,6 +26,12 @@ namespace FrmVista
             this.formMenuPrincipal = formMenuPrincipal;
         }
 
+        /// <summary>
+        /// Maneja el evento load del formulario "FrmAltaCliente".
+        /// Establece la selección predeterminada del RadioButton y suscribe un método de AgenciaViajes agencia al evento  que muestra la descripcion de paquetes.
+        /// </summary>
+        /// <param name="sender">Objeto que desencadenó el evento.</param>
+        /// <param name="e">Argumentos del evento.</param>
         private void FrmAltaCliente_Load(object sender, EventArgs e)
         {
             this.rdbBronce.Checked = true;
@@ -45,8 +51,6 @@ namespace FrmVista
                     reservaAux = this.GenerarReserva(pasajeroAux);
 
                     this.DarDeAltaReserva(pasajeroAux, reservaAux);
-
-
                 }
             }
             catch (Exception ex)
@@ -233,13 +237,16 @@ namespace FrmVista
 
         }
 
+        /// <summary>
+        /// Maneja el evento de clic en el botón para mostrar la descripción de los paquetes de viaje.
+        /// Invoca un método de AgenciaViajes que contiene un delegado encargado de invocar el metodo, para mostrar la descripción de los paquetes, si está disponible.
+        /// En caso contrario, muestra un mensaje indicando que no se ha cargado la información.
         private void btnDescripcionPaquetes_Click(object sender, EventArgs e)
         {
             try
             {
                 if (this.agencia.InvocarMostrarDescripcion(sender, e))
                 {
-
                 }
                 else
                 {
@@ -250,10 +257,15 @@ namespace FrmVista
             {
                 MessageBox.Show(ex.Message, "Error al mostrar descripcion", MessageBoxButtons.OK);
             }
-
             
         }
 
+        /// <summary>
+        /// Maneja el evento para mostrar la descripción de los paquetes de viaje.
+        /// Muestra la descripción de los paquetes utilizando un mensaje emergente (MessageBox).
+        /// </summary>
+        /// <param name="sender">Objeto que desencadenó el evento.</param>
+        /// <param name="e">Argumentos del evento.</param>
         private void AgenciaViajes_MostrarDescripcionPaquetes(object sender, EventArgs e)
         {
             MessageBox.Show(this.agencia.DescripcionPaquetes(),"Descripcion paquetes", MessageBoxButtons.OK,MessageBoxIcon.Information);
