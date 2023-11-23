@@ -41,6 +41,7 @@
             btnLeerReservas = new Button();
             txtNombreArchivo = new TextBox();
             lblNombreArchivo = new Label();
+            btnPromedioReservas = new Button();
             SuspendLayout();
             // 
             // lstHistorialVentas
@@ -79,7 +80,7 @@
             // 
             // txtEliminarReservaDNI
             // 
-            txtEliminarReservaDNI.Location = new Point(858, 297);
+            txtEliminarReservaDNI.Location = new Point(858, 310);
             txtEliminarReservaDNI.MaxLength = 8;
             txtEliminarReservaDNI.Name = "txtEliminarReservaDNI";
             txtEliminarReservaDNI.Size = new Size(100, 23);
@@ -88,7 +89,7 @@
             // lblDniReserva
             // 
             lblDniReserva.AutoSize = true;
-            lblDniReserva.Location = new Point(822, 300);
+            lblDniReserva.Location = new Point(822, 313);
             lblDniReserva.Name = "lblDniReserva";
             lblDniReserva.Size = new Size(27, 15);
             lblDniReserva.TabIndex = 8;
@@ -122,7 +123,7 @@
             // 
             // btnLeerReservas
             // 
-            btnLeerReservas.Location = new Point(822, 127);
+            btnLeerReservas.Location = new Point(822, 207);
             btnLeerReservas.Name = "btnLeerReservas";
             btnLeerReservas.Size = new Size(161, 23);
             btnLeerReservas.TabIndex = 12;
@@ -132,7 +133,7 @@
             // 
             // txtNombreArchivo
             // 
-            txtNombreArchivo.Location = new Point(822, 100);
+            txtNombreArchivo.Location = new Point(826, 178);
             txtNombreArchivo.MaxLength = 50;
             txtNombreArchivo.Name = "txtNombreArchivo";
             txtNombreArchivo.Size = new Size(161, 23);
@@ -142,11 +143,21 @@
             // lblNombreArchivo
             // 
             lblNombreArchivo.AutoSize = true;
-            lblNombreArchivo.Location = new Point(826, 79);
+            lblNombreArchivo.Location = new Point(826, 160);
             lblNombreArchivo.Name = "lblNombreArchivo";
             lblNombreArchivo.Size = new Size(93, 15);
             lblNombreArchivo.TabIndex = 14;
             lblNombreArchivo.Text = "Nombre archivo";
+            // 
+            // btnPromedioReservas
+            // 
+            btnPromedioReservas.Location = new Point(800, 40);
+            btnPromedioReservas.Name = "btnPromedioReservas";
+            btnPromedioReservas.Size = new Size(199, 23);
+            btnPromedioReservas.TabIndex = 15;
+            btnPromedioReservas.Text = "Precio promedio de Reserva";
+            btnPromedioReservas.UseVisualStyleBackColor = true;
+            btnPromedioReservas.Click += btnPromedioReservas_Click;
             // 
             // FrmHistorialDeVentas
             // 
@@ -154,6 +165,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1068, 450);
             ControlBox = false;
+            Controls.Add(btnPromedioReservas);
             Controls.Add(lblNombreArchivo);
             Controls.Add(txtNombreArchivo);
             Controls.Add(btnLeerReservas);
@@ -189,5 +201,6 @@
         private Button btnLeerReservas;
         private TextBox txtNombreArchivo;
         private Label lblNombreArchivo;
+        private Button btnPromedioReservas;
     }
 }

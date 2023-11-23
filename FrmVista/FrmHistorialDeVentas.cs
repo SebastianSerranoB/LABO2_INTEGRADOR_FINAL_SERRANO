@@ -11,6 +11,7 @@ using EntidadesAgencia;
 using EntidadesAgencia.Archivos;
 using EntidadesAgencia.BaseDeDatos;
 using EntidadesAgencia.Excepciones;
+using EntidadesAgencia.MetodosDeExtension;
 
 namespace FrmVista
 {
@@ -166,6 +167,20 @@ namespace FrmVista
                 MessageBox.Show(ex.Message, "Error al leer archivo");
             }
 
+        }
+
+        private void btnPromedioReservas_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                MessageBox.Show(this.agencia.PromedioDePrecioPorReserva());
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message,"No se pudo calcular");
+            
+            }
+            
         }
     }
 
