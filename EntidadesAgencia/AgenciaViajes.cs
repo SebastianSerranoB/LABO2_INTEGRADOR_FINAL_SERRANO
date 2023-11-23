@@ -61,6 +61,10 @@ namespace EntidadesAgencia
        }
 
 
+        /// <summary>
+        /// Devuelve una cadena que describe los paquetes de turismo disponibles, incluyendo detalles y valores, así como descuentos para diferentes grupos de edad.
+        /// </summary>
+        /// <returns>Cadena de texto con la descripción detallada de los paquetes de turismo.</returns>
         public string DescripcionPaquetes()
         {
             StringBuilder sb = new StringBuilder();
@@ -75,6 +79,12 @@ namespace EntidadesAgencia
             return sb.ToString(); 
         }
 
+
+        /// <summary>
+        /// Agrega un pasajero a la lista de pasajeros de la agencia si no está ya incluido.
+        /// </summary>
+        /// <param name="pasajero">Objeto de tipo Pasajero a agregar.</param>
+        /// <returns>Booleano indicando si se pudo agregar el pasajero o no.</returns>
         public bool AgregarPasajero(Pasajero pasajero)
         {
            if (this != pasajero)
@@ -86,6 +96,12 @@ namespace EntidadesAgencia
             return false;
         }
 
+
+        /// <summary>
+        /// Registra una reserva en el historial de reservas de la agencia si no está ya incluida.
+        /// </summary>
+        /// <param name="reserva">Objeto de tipo Reserva a registrar.</param>
+        /// <returns>Booleano indicando si se pudo registrar la reserva o no.</returns>
         public bool RegistrarReserva(Reserva reserva)
         {
             if (this != reserva)
@@ -97,6 +113,10 @@ namespace EntidadesAgencia
             return false;
         }
 
+        /// <summary>
+        /// Obtiene una lista de strings que representan información detallada de las reservas registradas.
+        /// </summary>
+        /// <returns>Lista de strings con información de las reservas o un mensaje de "No se registraron reservas".</returns>
         public List<string> MostarListaDeReservas()
         {
             List<string> listaDeReservas = new List<string>();
@@ -116,8 +136,12 @@ namespace EntidadesAgencia
 
             return listaDeReservas;
         }
-       
 
+
+        /// <summary>
+        /// Obtiene una lista de strings que representan información detallada de los pasajeros registrados.
+        /// </summary>
+        /// <returns>Lista de strings con información de los pasajeros o un mensaje de "No se registraron pasajeros".</returns>
         public List<string> MostrarListaDePasajeros()
         {
             List<string> listaDePasajeros = new List<string>();
@@ -138,6 +162,11 @@ namespace EntidadesAgencia
         }
 
 
+        /// <summary>
+        /// Busca un pasajero por su número de documento en la lista de pasajeros.
+        /// </summary>
+        /// <param name="dni">DNI del pasajero a buscar.</param>
+        /// <returns>Objeto Pasajero si se encuentra, de lo contrario retorna null.</returns>
         public Pasajero BuscarPasajeroPorDni(string dni)
         { 
             if(this.listaDePasajeros.Count > 0)
@@ -154,7 +183,11 @@ namespace EntidadesAgencia
             return null;
         }
 
-        //posible metodo de extension
+        /// <summary>
+        /// Obtiene la cantidad de reservas registradas asociadas a un número de documento (DNI) específico.
+        /// </summary>
+        /// <param name="dni">DNI del pasajero a buscar.</param>
+        /// <returns>Número entero que representa la cantidad de reservas asociadas al DNI proporcionado.</returns>
         public int CantidadDeReservasRegistradasADNI(string dni)
         {
             int retorno = 0;
@@ -176,7 +209,12 @@ namespace EntidadesAgencia
 
 
 
-
+        /// <summary>
+        /// Sobrecarga de operador '==' para comprobar si una reserva está contenida en la agencia.
+        /// </summary>
+        /// <param name="agencia">AgenciaViajes donde se busca la reserva.</param>
+        /// <param name="reserva">Reserva a buscar en la agencia.</param>
+        /// <returns>Booleano indicando si la reserva está presente en la agencia.</returns>
         public static bool operator ==(AgenciaViajes agencia, Reserva reserva)
         {
             if (agencia is not null && reserva is not null  && agencia.Reservas.Count > 0)
