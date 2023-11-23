@@ -9,15 +9,27 @@ using System.Threading.Tasks;
 
 namespace EntidadesAgencia.BaseDeDatos
 {
+    /// <summary>
+    /// Clase encargada de realizar operaciones CRUD relacionadas con la gestión de pasajeros en la base de datos.
+    /// Implementa la interfaz IAdministradorBaseDeDatos que define metodos CRUD basicos.
+    /// </summary>
     public class ADOPasajeros : IAdministradorBaseDeDatos<Pasajero>
     {
         private string stringConnection;
 
+        /// <summary>
+        /// Inicializa una nueva instancia de la clase ADOPasajeros con la cadena de conexión predeterminada.
+        /// </summary>
         public ADOPasajeros()
         {
             this.stringConnection = "Server=.;Database=INTEGRADOR_AgenciaTurismo_DB;Trusted_Connection=True;";
         }
 
+        /// <summary>
+        /// Agrega un nuevo pasajero a la base de datos.
+        /// </summary>
+        /// <param name="elemento">El pasajero a agregar.</param>
+        /// <returns>True si se agregó correctamente; de lo contrario, False.</returns>
         public bool AgregarNuevoElemento(Pasajero elemento)
         {
             try
@@ -28,10 +40,10 @@ namespace EntidadesAgencia.BaseDeDatos
                      "values (@dni_pasajero,@nombre,@apellido,@edad)";
 
                     SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("dni_pasajero", elemento.Dni);
-                    command.Parameters.AddWithValue("nombre", elemento.Nombre);
-                    command.Parameters.AddWithValue("apellido", elemento.Apellido);
-                    command.Parameters.AddWithValue("edad", elemento.Edad);
+                    command.Parameters.AddWithValue("@dni_pasajero", elemento.Dni);
+                    command.Parameters.AddWithValue("@nombre", elemento.Nombre);
+                    command.Parameters.AddWithValue("@apellido", elemento.Apellido);
+                    command.Parameters.AddWithValue("@edad", elemento.Edad);
 
                     connection.Open();
 
@@ -48,6 +60,13 @@ namespace EntidadesAgencia.BaseDeDatos
             }
         }
 
+
+        /// <summary>
+        /// Elimina un pasajero de la base de datos utilizando su número de documento de identidad (DNI).
+        /// </summary>
+        /// <param name="dniElemento">Número de documento de identidad del pasajero a eliminar.</param>
+        /// <param name="mensaje">Mensaje adicional para identificar el contexto del error, en caso de ocurrir.</param>
+        /// <returns>True si se eliminó correctamente; de lo contrario, False.</returns>
         public bool EliminarElementoPorDNI(string dniElemento, string mensaje)
         {
             try
@@ -57,7 +76,7 @@ namespace EntidadesAgencia.BaseDeDatos
                     string query = "DELETE FROM pasajeros WHERE dni_pasajero=@dniElemento";
 
                     SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("dniPasajero", dniElemento);
+                    command.Parameters.AddWithValue("@dniPasajero", dniElemento);
 
 
                     connection.Open();
@@ -75,6 +94,14 @@ namespace EntidadesAgencia.BaseDeDatos
             }
         }
 
+
+
+        /// <summary>
+        /// Obtiene un pasajero de la base de datos mediante su número de documento de identidad (DNI).
+        /// </summary>
+        /// <param name="dniElemento">Número de documento de identidad del pasajero a obtener.</param>
+        /// <param name="mensaje">Mensaje adicional para identificar el contexto del error, en caso de ocurrir.</param>
+        /// <returns>El pasajero correspondiente al DNI proporcionado.</returns>
         public Pasajero ObtenerElementoPorDNI(string dniElemento, string mensaje)
         {
             try
@@ -85,7 +112,7 @@ namespace EntidadesAgencia.BaseDeDatos
                     string query = $"SELECT * FROM pasajeros WHERE dni_pasajero=@dniElemento";
                     SqlCommand command = new SqlCommand(query, connection);
 
-                    command.Parameters.AddWithValue("dniElemento", dniElemento);
+                    command.Parameters.AddWithValue("@dniElemento", dniElemento);
 
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
@@ -117,6 +144,11 @@ namespace EntidadesAgencia.BaseDeDatos
             }
         }
 
+
+        /// <summary>
+        /// Obtiene todos los pasajeros almacenados en la base de datos.
+        /// </summary>
+        /// <returns>Una lista de todos los pasajeros almacenados.</returns>
         public List<Pasajero> ObtenerTodosLosElementos()
         {
             try
@@ -165,6 +197,13 @@ namespace EntidadesAgencia.BaseDeDatos
         }
 
 
+
+        /// <summary>
+        /// Modifica los datos de un pasajero en la base de datos utilizando su número de documento de identidad (DNI).
+        /// </summary>
+        /// <param name="elemento">Nuevo objeto Pasajero con los datos actualizados.</param>
+        /// <param name="dniElemento">Número de documento de identidad del pasajero a modificar.</param>
+        /// <returns>True si la modificación se realizó correctamente; de lo contrario, False.</returns>
         public bool ModificarElementoPorDNI(Pasajero elemento, string dniElemento)
         {
             try

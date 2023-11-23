@@ -9,10 +9,17 @@ using System.Threading.Tasks;
 
 namespace EntidadesAgencia.BaseDeDatos
 {
+
+    /// <summary>
+    /// Implementación de la interfaz IAdministradorBaseDeDatos para gestionar operaciones lectura/escritura de reservas en la base de datos.
+    /// </summary>
     public class ADOReservas : IAdministradorBaseDeDatos<Reserva>
     {
         private string stringConnection;
 
+        /// <summary>
+        /// Constructor que inicializa la cadena de conexión a la base de datos.
+        /// </summary>
         public ADOReservas()
         {
             this.stringConnection = "Server=.;Database=INTEGRADOR_AgenciaTurismo_DB;Trusted_Connection=True;";
@@ -20,7 +27,11 @@ namespace EntidadesAgencia.BaseDeDatos
 
 
 
-
+        /// <summary>
+        /// Agrega una nueva reserva a la base de datos.
+        /// </summary>
+        /// <param name="elemento">Reserva a agregar.</param>
+        /// <returns>True si la reserva se agregó correctamente; de lo contrario, False.</returns>
         public bool AgregarNuevoElemento(Reserva elemento)
         {
             try
@@ -49,7 +60,13 @@ namespace EntidadesAgencia.BaseDeDatos
             }
         }
 
-       
+
+        /// <summary>
+        /// Elimina una reserva de la base de datos utilizando el DNI del pasajero y el nombre del paquete reservado.
+        /// </summary>
+        /// <param name="dniElemento">DNI del pasajero de la reserva a eliminar.</param>
+        /// <param name="paqueteReservado">hace referencia a un tipo de enum EPaquetesViaje.</param>
+        /// <returns>True si la reserva se eliminó correctamente; de lo contrario, False.</returns>
         public bool EliminarElementoPorDNI(string dniElemento, string paqueteReservado)
         {
             try
@@ -76,7 +93,13 @@ namespace EntidadesAgencia.BaseDeDatos
             }
         }
 
-       
+
+        /// <summary>
+        /// Obtiene una reserva de la base de datos utilizando el DNI del pasajero y el nombre del paquete reservado.
+        /// </summary>
+        /// <param name="dniElemento">DNI del pasajero de la reserva a obtener.</param>
+        /// <param name="paqueteReservado">hace referencia a un tipo de enum EPaquetesViaje.</param>
+        /// <returns>La reserva correspondiente al DNI y paquete recibidos.</returns>
         public Reserva ObtenerElementoPorDNI(string dniElemento, string paqueteReservado)
         {
             try
@@ -136,15 +159,10 @@ namespace EntidadesAgencia.BaseDeDatos
         }
 
 
-
-
-
-
-
-
-
-
-
+        /// <summary>
+        /// Obtiene todas las reservas almacenadas en la base de datos.
+        /// </summary>
+        /// <returns>Una lista de todas las reservas almacenadas.</returns>
         public List<Reserva> ObtenerTodosLosElementos()
         {
             try
