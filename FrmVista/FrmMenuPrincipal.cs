@@ -1,6 +1,7 @@
 using EntidadesAgencia;
 using EntidadesAgencia.Archivos;
 using EntidadesAgencia.BaseDeDatos;
+using EntidadesAgencia.Excepciones;
 using System.Text;
 using System.Threading;
 
@@ -170,8 +171,16 @@ namespace FrmVista
 
         private void FrmMenuPrincipal_FormClosing(object sender, FormClosingEventArgs e)
         {
-            GestorArchivosAgencia.GuardarPasajerosEnArchivo(this.agencia.Pasajeros, "registroPasajeros");
-            GestorArchivosAgencia.GuardarReservasEnArchivo(this.agencia.Reservas, "registroReservas");
+            try
+            {
+                GestorArchivosAgencia.GuardarPasajerosEnArchivo(this.agencia.Pasajeros, "registroPasajeros");
+                GestorArchivosAgencia.GuardarReservasEnArchivo(this.agencia.Reservas, "registroReservas");
+            }
+            catch(Exception ex)
+            {
+                throw new ManejoDeArchivosException("Error al guardar archivos.",ex);
+            }
+            
         }
 
 

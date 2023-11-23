@@ -34,8 +34,16 @@ namespace FrmVista
         /// <param name="e">Argumentos del evento.</param>
         private void FrmAltaCliente_Load(object sender, EventArgs e)
         {
-            this.rdbBronce.Checked = true;
-            this.agencia.botonMostrarDescripcionPulsado += AgenciaViajes_MostrarDescripcionPaquetes;
+            try
+            {
+                this.rdbBronce.Checked = true;
+                this.agencia.botonMostrarDescripcionPulsado += AgenciaViajes_MostrarDescripcionPaquetes;
+            }
+            catch(Exception ex) 
+            {
+                MessageBox.Show(ex.Message,"Error al cargar formulario de Alta.");
+            }
+       
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -268,7 +276,16 @@ namespace FrmVista
         /// <param name="e">Argumentos del evento.</param>
         private void AgenciaViajes_MostrarDescripcionPaquetes(object sender, EventArgs e)
         {
-            MessageBox.Show(this.agencia.DescripcionPaquetes(),"Descripcion paquetes", MessageBoxButtons.OK,MessageBoxIcon.Information);
+            try
+            {
+                MessageBox.Show(this.agencia.DescripcionPaquetes(), "Descripcion paquetes", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+           
+            
         }
 
 
