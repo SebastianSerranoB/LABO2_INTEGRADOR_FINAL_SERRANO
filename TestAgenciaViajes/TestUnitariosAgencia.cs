@@ -2,9 +2,17 @@ using EntidadesAgencia;
 using EntidadesAgencia.MetodosDeExtension;
 namespace TestAgenciaViajes
 {
+    /// <summary>
+    /// Clase para pruebas unitarias de la clase AgenciaViajes.
+    /// </summary>
     [TestClass]
     public class TestUnitariosAgencia
     {
+
+        /// <summary>
+        /// Verifica que el cálculo del promedio de precio por reserva
+        /// devuelve el resultado esperado.
+        /// </summary>
         [TestMethod]
         public void PromedioDePrecioPorReserva_SeEsperaObtener_ElPromedioCorrespondiente()
         {
@@ -28,6 +36,10 @@ namespace TestAgenciaViajes
             Assert.AreEqual(valorEsperado, resultado);
         }
 
+        /// <summary>
+        /// Verifica que el cálculo del promedio de precio por reserva cuando no existen reservas en lista
+        /// devuelva el resultado esperado.
+        /// </summary>
         [TestMethod]
         public void PromedioDePrecioPorReserva_CuandoNoExistenReservas_RegresaMensajeSinReservas()
         {
@@ -42,6 +54,11 @@ namespace TestAgenciaViajes
             Assert.AreEqual(valorEsperado, resultado);
         }
 
+
+        /// <summary>
+        /// Verifica que dos objetos Pasajero sean considerados iguales
+        /// cuando sus números de DNI coinciden.
+        /// </summary>
         [TestMethod]
         public void AlCompararDosPasajeros_CuandoSuDniCoincide_SeEsperaQueRetorneTrue()
         {
@@ -56,6 +73,11 @@ namespace TestAgenciaViajes
             Assert.IsTrue(resultado, "Dos Pasajeros son iguales si tienen el mismo DNI.");
         }
 
+
+        /// <summary>
+        /// Verifica que dos objetos Pasajero sean considerados distintos
+        /// cuando sus números de DNI no coinciden.
+        /// </summary>
         [TestMethod]
         public void AlCompararDosPasajeros_ConDistintoDni_SeEsperaQueRetorneFalse()
         {
@@ -71,6 +93,10 @@ namespace TestAgenciaViajes
         }
 
 
+        /// <summary>
+        /// Verifica que dos objetos Pasajero sean no considerados iguales
+        /// cuando uno de los operandos es null.
+        /// </summary>
         [TestMethod]
         public void AlCompararDosPasajeros_SiAlgunoEsNull_SeEsperaQueRetorneFalse()
         {

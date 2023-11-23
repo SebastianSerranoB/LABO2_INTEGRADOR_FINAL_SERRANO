@@ -10,15 +10,25 @@ using System.Collections;
 using EntidadesAgencia.Excepciones;
 
 namespace EntidadesAgencia.Archivos
-{
+    {/// <summary>
+    /// Clase  que gestiona operaciones de lectura y escritura de archivos relacionados con la agencia de viajes.
+    /// </summary>
     public static class GestorArchivosAgencia
     {
         public static string RutaPorDefecto;
+
+        /// <summary>
+        /// Inicializa la ruta por defecto utilizando la carpeta de escritorio del usuario.
+        /// </summary>
         static GestorArchivosAgencia() 
         {
             GestorArchivosAgencia.RutaPorDefecto = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
         }
-
+       
+        /// <summary>
+        /// Obtiene la ruta por defecto para guardar archivos.
+        /// </summary>
+        /// <returns>La ruta por defecto para guardar archivos.</returns>
         private static string ObtenerRutaPorDefecto()
         {
             string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
@@ -27,7 +37,12 @@ namespace EntidadesAgencia.Archivos
             return rutaCompleta;
         }
 
-
+        /// <summary>
+        /// Guarda la lista de pasajeros en un archivo con formato JSON en la ruta especificada.
+        /// </summary>
+        /// <param name="listaDePasajeros">Lista de pasajeros a guardar.</param>
+        /// <param name="nombreArchivo">Nombre del archivo de salida.</param>
+        /// <returns>True si la operación de guardado fue exitosa; de lo contrario, False.</returns>
         public static bool GuardarPasajerosEnArchivo(List<Pasajero> listaDePasajeros, string nombreArchivo)
         {
             JsonSerializerOptions options = new JsonSerializerOptions();
@@ -60,7 +75,11 @@ namespace EntidadesAgencia.Archivos
         }
 
 
-
+        /// <summary>
+        /// Lee un archivo con la lista de pasajeros en formato JSON desde la ruta especificada.
+        /// </summary>
+        /// <param name="nombreArchivo">Nombre del archivo a leer.</param>
+        /// <returns>La lista de pasajeros leída desde el archivo. Si el archivo no existe, devuelve una lista vacía.</returns>
         public static List<Pasajero> LeerArchivoPasajeros(string nombreArchivo)
         {
             List<Pasajero>? listaDePasajeros; 
@@ -91,8 +110,12 @@ namespace EntidadesAgencia.Archivos
             
         }
 
-       
 
+        /// <summary>
+        /// Lee un archivo con la lista de reservas en formato JSON desde la ruta especificada.
+        /// </summary>
+        /// <param name="nombreArchivo">Nombre del archivo a leer.</param>
+        /// <returns>La lista de reservas leída desde el archivo. Si el archivo no existe, devuelve una lista vacía.</returns>
         public static List<Reserva> LeerArchivoReservas(string nombreArchivo)
         {
             List<Reserva>? listaDeReservas;
@@ -124,6 +147,12 @@ namespace EntidadesAgencia.Archivos
        
         }
 
+        /// <summary>
+        /// Guarda la lista de reservas en un archivo con formato JSON en la ruta especificada.
+        /// </summary>
+        /// <param name="listaDePasajeros">Lista de reservas a guardar.</param>
+        /// <param name="nombreArchivo">Nombre del archivo de salida.</param>
+        /// <returns>True si la operación de guardado fue exitosa; de lo contrario, False.</returns>
         public static bool GuardarReservasEnArchivo(List<Reserva> listaDeReservas, string nombreArchivo)
         {
             JsonSerializerOptions options = new JsonSerializerOptions();
